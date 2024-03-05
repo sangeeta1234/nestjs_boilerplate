@@ -87,11 +87,7 @@ variable "service_account_roles" {
         "cloudsql.users.list",
         "cloudsql.users.create",
         "cloudsql.users.update",
-        "cloudsql.users.delete",
-        "cloudsql.sslCerts.get",
-        "cloudsql.sslCerts.list",
-        "cloudsql.ipAddresses.get",
-        "cloudsql.ipAddresses.list",
+        "cloudsql.users.delete"
       ]
     }
     # Add more roles as needed
