@@ -87,13 +87,28 @@ variable "service_account_roles" {
         "cloudsql.users.list",
         "cloudsql.users.create",
         "cloudsql.users.update",
-        "cloudsql.users.delete"
+        "cloudsql.users.delete",
+
+        #iam role
+        "iam.roles.create",
+        "iam.roles.delete",
+        "iam.roles.get",
+        "iam.roles.list"
       ]
     }
     # Add more roles as needed
   }
 }
 
-
+variable "enable_apis" {
+  type    = list(string)
+  default = [
+    "sqladmin.googleapis.com"
+  ]
+}
  
+
+variable "deployment_region" {
+    default = "us-central1"
+}
 

@@ -11,7 +11,7 @@ service_accounts = {
 }
 
 service_account_roles = {
-  "custom.api_service" = {
+  "api_service" = {
     title                      = "Cloud Run"
     description                = "Cloud Run Api Service Account"
     excluded_permissions       = []
@@ -30,7 +30,13 @@ service_account_roles = {
         "cloudsql.users.list",
         "cloudsql.users.create",
         "cloudsql.users.update",
-        "cloudsql.users.delete"
+        "cloudsql.users.delete",
+
+        #iam role
+        "iam.roles.create",
+        "iam.roles.delete",
+        "iam.roles.get",
+        "iam.roles.list",
     ]
   }
 }
