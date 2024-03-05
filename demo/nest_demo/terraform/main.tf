@@ -38,3 +38,16 @@ module "custom-roles" {
   excluded_permissions = each.value.excluded_permissions
   members              = []
 }
+
+module "service_account-iam-bindings" {
+  source = "terraform-google-modules/iam/google//modules/service_accounts_iam"
+  depends_on   = [module.service_accounts]
+  for_each = {
+        for key, val in var.service_accounts :
+        key => val if length(val.service_accounts_binding) > 0
+  }
+  service_accounts = [module.service_accounts[each.key].email]
+  project          = var.project
+  mode             = "additive"
+  bindings = each.value.service_account_iam_binding
+}
