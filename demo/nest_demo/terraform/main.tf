@@ -14,13 +14,11 @@ credentials = file(var.credentials_file)
  zone    = var.zone
 }
 
-module "service_account" {
+module "service_accounts" {
   source            = "terraform-google-modules/service-accounts/google"
   for_each          = var.service_accounts
   project_id        = var.project
-  names         = [each.value.name]  # Use "names" instead of "name"
-  display_name      = each.value.display_name
+  names         =  each.value.service_accounts_name 
+  display_name      = each.value.service_accounts_display_name
   # Additional attributes as needed
 }
-
-
